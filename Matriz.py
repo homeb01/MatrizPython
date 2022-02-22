@@ -61,7 +61,14 @@ for tupla in data:
     f = int(tupla[0].strip())
     c = int(tupla[1].strip())
     value = tupla[2].strip()
-    matrix[c-1][f-1] = value
+    if (value != '0.000000000000000E+000'):
+        matrix[c-1][f-1] = value
+        
+for i in range(n):
+    for j in range(n):
+        if (j > i):
+            matrix[j][i] = ''
+
 df = pd.DataFrame(matrix).T
 df.index += 1
 df.columns += 1
